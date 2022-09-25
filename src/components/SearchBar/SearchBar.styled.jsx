@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   align-items: center;
   position: relative;
   margin-bottom: 16px;
-  text-transform: uppercase;
 `;
 
 export const SearchInput = styled.input`

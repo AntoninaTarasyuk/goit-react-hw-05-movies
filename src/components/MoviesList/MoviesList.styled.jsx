@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Container = styled.ul`
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
 `;
 

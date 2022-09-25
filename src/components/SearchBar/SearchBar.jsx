@@ -1,28 +1,17 @@
-// import { useState, useEffect } from "react";
-// import { useSearchParams } from 'react-router-dom';
-import { FaSearch } from "react-icons/fa";
-
-import { Wrapper, SearchInput, SearchBtn } from "./SearchBar.styled";
-
-export const SearchBar = () => {
-
+import { Wrapper, SearchInput } from "./SearchBar.styled";
+// import { FaSearch } from "react-icons/fa";
+export const SearchBar = ({value, onChange}) => {
   return (
     <Wrapper>
-      <form onSubmit={e => {
-        e.preventDefault();
-        // onSubmit(searchQuery);
-        // searchQuery("");
-        }}>
+      {/* <form> */}
         <SearchInput
           type="text"
-          autoComplete="off"
-          name="searchQuery"
-          // value={searchQuery}
+          value={value}
           placeholder="Enter movie name"
-          // onChange={e => setSearchQuery(e.target.value)}
+          onChange={e => onChange(e.target.value)}
         />
-        <SearchBtn type="submit"><FaSearch /></SearchBtn>
-      </form>
+        {/* <SearchBtn type="submit"><FaSearch /></SearchBtn>
+      </form> */}
     </Wrapper>
   );
-};
+}

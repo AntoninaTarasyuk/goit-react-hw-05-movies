@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieCredits } from "../../services/API-service";
+import { getMovieCredits, posterW200 } from "../../services/API-service";
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -24,7 +24,7 @@ export const Cast = () => {
             <li key={item.id}>
               <img src={
                 item.profile_path
-                  ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
+                  ? `${posterW200}${item.profile_path}`
                   : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
               } alt={item.name} />
               <p>{item.name}</p>

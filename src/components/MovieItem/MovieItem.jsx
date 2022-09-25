@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { poster } from "../../services/API-service";
+import { posterW500 } from "../../services/API-service";
 
 export const MovieItem = ({ movie }) => {
   const { title, poster_path } = movie;
@@ -8,7 +8,7 @@ export const MovieItem = ({ movie }) => {
       <img
         src={
           poster_path
-            ? `${poster}` + poster_path
+            ? `${posterW500}` + poster_path
             : "https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg"
         }
         alt={title}
