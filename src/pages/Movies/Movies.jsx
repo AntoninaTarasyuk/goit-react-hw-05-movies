@@ -4,7 +4,7 @@ import { getFoundMovies } from "../../services/API-service";
 import { MoviesList } from "../../components/MoviesList/MoviesList";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
@@ -34,3 +34,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

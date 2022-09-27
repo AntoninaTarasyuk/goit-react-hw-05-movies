@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCredits, posterW200 } from "../../services/API-service";
-import { Container, ActorsList, Item, Photo, Actor, Role } from "./Cast.Styled";
+import { ActorsList, Item, Photo, Actor, Role } from "./Cast.Styled";
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -17,7 +17,7 @@ export const Cast = () => {
   // console.log(cast);
 
   return (
-    <Container>
+    <>
       {!cast.length
         ? (<p>No cast</p>)
         : (<ActorsList>
@@ -35,6 +35,7 @@ export const Cast = () => {
           }
         </ActorsList>)
       }
-    </Container>
+    </>
   );
 };
+export default Cast;

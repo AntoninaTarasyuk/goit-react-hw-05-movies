@@ -24,10 +24,12 @@ export async function getMovieDetails(movieId) {
   return response.data;
 };
 export async function getMovieCredits(movieId) {
-  const response = await axios.get(
+  try {
+    const response = await axios.get(
     `movie/${movieId}/credits?&api_key=${API_KEY}&language=en-US`
   );
-  return response.data.cast;
+    return response.data.cast;
+  } catch {console.error();}
 };
 export async function getMovieReviews(movieId) {
   const response = await axios.get(

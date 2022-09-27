@@ -4,7 +4,7 @@ import { getMovieDetails, posterW500 } from "../../services/API-service";
 import { BackLink } from "../../components/BackLink";
 import { MainInfo, AddInfo, RightWrap, Poster, H2, H3 } from "./MovieDetails.styled";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/home";
   const { movieId } = useParams();
@@ -69,3 +69,4 @@ export const MovieDetails = () => {
     </main>
   );
 };
+export default MovieDetails;

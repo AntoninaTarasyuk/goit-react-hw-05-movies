@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 export const SearchInput = styled.input`
   padding: 8px 32px 8px 8px;
   border-radius: 4px;
+  border: 2px solid #000000;
   font: inherit;
 `;
 
