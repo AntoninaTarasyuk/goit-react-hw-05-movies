@@ -13,7 +13,7 @@ export async function getTrendyMovies() {
 };
 export async function getFoundMovies(searchQuery) {
   const response = await axios.get(
-    `search/movie?q=${searchQuery}&page=1&${params}`
+    `search/movie?query=${searchQuery}&page=1&${params}`
   );
   return response.data.results;
 };
@@ -33,6 +33,5 @@ export async function getMovieReviews(movieId) {
   const response = await axios.get(
     `movie/${movieId}/reviews?&api_key=${API_KEY}&language=en-US`
   );
-  return response.data.results
-;
+  return response.data.results;
 };

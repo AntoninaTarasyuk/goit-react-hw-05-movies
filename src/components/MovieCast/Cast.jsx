@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCredits, posterW200 } from "../../services/API-service";
+import { Container, ActorsList, Item, Photo, Actor, Role } from "./Cast.Styled";
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -13,27 +14,27 @@ export const Cast = () => {
     };
     getCast();
   }, [movieId]);
-  console.log(cast);
+  // console.log(cast);
 
   return (
-    <div>
+    <Container>
       {!cast.length
         ? (<p>No cast</p>)
-        : (<ul>
+        : (<ActorsList>
           {cast.map((item) => (
-            <li key={item.id}>
-              <img src={
+            <Item key={item.id}>
+              <Photo src={
                 item.profile_path
                   ? `${posterW200}${item.profile_path}`
                   : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
               } alt={item.name} />
-              <p>{item.name}</p>
-              <p>Character: {item.character}</p>
-            </li>
+              <Actor>{item.name}</Actor>
+              <Role>Character: {item.character}</Role>
+            </Item>
           ))
           }
-        </ul>)
+        </ActorsList>)
       }
-    </div>
+    </Container>
   );
 };

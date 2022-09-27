@@ -2,6 +2,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails, posterW500 } from "../../services/API-service";
 import { BackLink } from "../../components/BackLink";
+import { MainInfo, AddInfo, RightWrap, Poster, H2, H3 } from "./MovieDetails.styled";
 
 export const MovieDetails = () => {
   const location = useLocation();
@@ -24,38 +25,44 @@ export const MovieDetails = () => {
   return (
     <main>
       <BackLink to={backLinkHref}>Go back</BackLink>
-      <img src={
+      <MainInfo>
+        <Poster src={
           poster_path
             ? `${posterW500}` + poster_path
             : "https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg"
-        }
-        alt={title}
-      />
-      <h2>{title}</h2>
-      <p>Vote average: {vote_average}</p>
-      {overview && (
-        <div>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-        </div>
-      )}
-      <div>
-        <h3>Genres</h3>
-        {genres && (
-          <p>{genres.map(genre => genre.name).join(', ')}</p>
-        )}
-      </div>
-      <div>
-        <h3>Additional information</h3>
+          }
+          alt={title}
+        />
+        <RightWrap>
+          <H2>{title}</H2>
+          <p>Vote average: {vote_average}</p>
+          <div>
+            <H3>Overview</H3>
+            {overview 
+              && (<p>{overview}</p>)
+            }
+          </div>
+          <div>
+            <H3>Genres</H3>
+            {genres
+              && <p>{genres.map(genre => genre.name).join(', ')}</p>
+            }
+          </div>
+        </RightWrap>
+      </MainInfo>
+      
+      <AddInfo>
+        <H3>Additional information</H3>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{from: location.state?.from}}>Cast</Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{from: location.state?.from}}>Reviews</Link>
           </li>
         </ul>
-      </div>
+      </AddInfo>
+
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

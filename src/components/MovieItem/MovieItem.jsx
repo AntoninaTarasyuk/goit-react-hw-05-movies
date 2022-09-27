@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { posterW500 } from "../../services/API-service";
+import { CardWrapper, H2 } from "./MovieItem.Styled";
 
 export const MovieItem = ({ movie }) => {
   const { title, poster_path } = movie;
   return (
-    <>
+    <CardWrapper>
       <img
         src={
           poster_path
@@ -13,14 +14,14 @@ export const MovieItem = ({ movie }) => {
         }
         alt={title}
         />
-      <h2>{title}</h2>
-    </>
+      <H2>{title}</H2>
+    </CardWrapper>
   );
 };
 
 MovieItem.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
     poster_path: PropTypes.string,
+    title: PropTypes.string.isRequired,
   }).isRequired,
 };

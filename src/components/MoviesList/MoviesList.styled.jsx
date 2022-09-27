@@ -1,17 +1,15 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
-export const Container = styled.ul`
+export const List = styled.ul`
   display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-auto-rows: auto;
+  grid-gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
 `;
-
-export const CardWrapper = styled.div`
-  border: 1px solid black;
-  border-radius: 4px;
-
-  > a {
-    text-decoration: none;
-  }
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000000;
 `;
