@@ -1,13 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { GlobalStyles } from "./GlobalStyles";
 import { SharedLayout } from "components/SharedLayout/SharedLayout";
-
-// import Home from "pages/Home/Home";
-// import Movies from "pages/Movies/Movies";
-// import MovieDetails from "pages/MovieDetails/MovieDetails";
-// import Cast from "components/MovieCast/Cast";
-// import Reviews from "components/MovieReviews/Reviews";
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const Movies = lazy(() => import("../pages/Movies/Movies"));
@@ -29,6 +25,7 @@ export const App = () => {
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
+    <ToastContainer autoClose={2000} theme="colored" />
     <GlobalStyles />
     </>
   );

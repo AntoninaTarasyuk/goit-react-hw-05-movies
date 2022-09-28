@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
-import { Wrapper, SearchInput } from "./SearchBar.styled";
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { SearchForm, SearchInput, SearchBtn } from "./SearchBar.styled";
 
-export const SearchBar = ({ value, onChange }) => {
+export const SearchBar = ({ onSubmit }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const hendleSubmit = e => {
+    e.preventDefault();
+    onSubmit(searchQuery);
+    if (searchQuery.trim() === "") {
+      setSearchQuery("");
+      return toast.info("Please enter a search query");
+    };
+    setSearchQuery("");
+  }
   return (
-    <Wrapper>
+    <SearchForm onSubmit={hendleSubmit}>
       <SearchInput
         type="text"
-        value={value}
+        name="searchQuery"
         placeholder="Enter movie name"
-        onChange={e => onChange(e.target.value)}
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
       />
-    </Wrapper>
+      <SearchBtn type="submit"><FaSearch /></SearchBtn>
+    </SearchForm>
   );
 };
 
 SearchBar.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getFoundMovies } from "../../services/API-service";
 import { MoviesList } from "../../components/MoviesList/MoviesList";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
@@ -11,8 +12,9 @@ const Movies = () => {
   // console.log(query);
 
   useEffect(() => {
+    if (query.trim() === "") { return };
     async function getMovies(queryVal) {
-      if (queryVal!=="") {
+      if (queryVal.trim()!=="") {
         try {
           const foundMovies = await getFoundMovies(queryVal);
           setMovies(foundMovies);
@@ -24,12 +26,15 @@ const Movies = () => {
   
 
   const changeQuery = value => {
+    if (value === query) {
+      return toast.info(`You just searched for ${query}. Try searching for something else`);
+    };
     setSearchParams(value !== "" ? { query: value } : {});
   }
   
   return (
     <>
-      <SearchBar value={query} onChange={changeQuery}/>
+      <SearchBar onSubmit={changeQuery}/>
       {movies && <MoviesList movies={movies} />}
     </>
   );
